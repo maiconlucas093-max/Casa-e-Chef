@@ -2095,87 +2095,104 @@ if (recipeTitleElement) {
   }
   
   
-  function speakCurrentStep() {
-    // Áudios HeyGen da Chef Marcia para as cinco etapas do arroz
-    const arrozAudios = [
-  "audio-etapa-1-ingredientes.wav",
-  "audio-etapa-2-refogar.mp3",
-  "audio-etapa-3-acrescentar-arroz.mp3",
-  "audio-etapa-4-cozinhar.mp3",
-  "audio-etapa-5-descansar.mp3"
-];
+  
 
-    if (recipeKey === "arroz" && currentStep < arrozAudios.length) {
-      if (recipeAudio) {
-        recipeAudio.pause();
-        recipeAudio.currentTime = 0;
-      }
+function speakCurrentStep() {
+  // Áudios HeyGen organizados por receita
+  const audiosPorReceita = {
+    arroz: [
+      "audio-etapa-1-ingredientes.wav",
+      "audio-etapa-2-refogar.mp3",
+      "audio-etapa-3-acrescentar-arroz.mp3",
+      "audio-etapa-4-cozinhar.mp3",
+      "audio-etapa-5-descansar.mp3"
+    ],
 
-      recipeAudio = new Audio(arrozAudios[currentStep]);
+    feijao: [
+      "audio-feijao-etapa-1.mp3",
+      "audio-feijao-etapa-2.mp3",
+      "audio-feijao-etapa-3.mp3",
+      "audio-feijao-etapa-4.mp3",
+      "audio-feijao-etapa-5.mp3"
+    ]
+  };
 
-      recipeAudio.addEventListener("ended", () => {
-        audioStatus.textContent = "Instrução finalizada.";
-      });
+  const audiosDaReceita = audiosPorReceita[recipeKey];
 
-      recipeAudio.addEventListener("error", () => {
-        audioStatus.textContent = "Erro ao carregar o áudio. Confira o nome do arquivo.";
-      });
-
-      recipeAudio.play()
-        .then(() => {
-          audioStatus.textContent =
-            "A Chef Marcia está falando com você...";
-
-          timerStart.click();
-        })
-        .catch((erro) => {
-  audioStatus.textContent =
-    "Erro: " + erro.name + " — " + erro.message;
-  console.error("Falha no áudio:", erro);
-});
-
-      return;
+  // Reproduz o áudio específico da etapa
+  if (audiosDaReceita && currentStep < audiosDaReceita.length) {
+    if (recipeAudio) {
+      recipeAudio.pause();
+      recipeAudio.currentTime = 0;
     }
 
-    // Mantém a voz do navegador para as demais receitas
-    if (!("speechSynthesis" in window)) {
-      audioStatus.textContent =
-        "Seu navegador não oferece narração por voz.";
-      return;
-    }
+    recipeAudio = new Audio(audiosDaReceita[currentStep]);
 
-    window.speechSynthesis.cancel();
-
-    const step = recipe.steps[currentStep];
-
-    const text =
-      "Vamos continuar com nossa receita de " + recipe.title + ". " +
-      "Agora, nesta etapa, vamos " + step[0].toLowerCase() + ". " +
-      step[1] + ". " +
-      "A intensidade do fogo deve ser: " + step[2] + ". " +
-      "Uma dica importante do Chef: " + step[4];
-
-    const speech = new SpeechSynthesisUtterance(text);
-
-    speech.lang = "pt-BR";
-    speech.rate = 0.96;
-    speech.pitch = 1.04;
-    speech.volume = 1;
-
-    speech.onstart = () => {
-      audioStatus.textContent = "O Chef está falando com você...";
-    };
-
-    speech.onend = () => {
+    recipeAudio.addEventListener("ended", () => {
       audioStatus.textContent = "Instrução finalizada.";
-    };
+    });
 
-    speech.onerror = () => {
-      audioStatus.textContent = "Não foi possível reproduzir a voz.";
-    };
+    recipeAudio.addEventListener("error", () => {
+      audioStatus.textContent =
+        "Erro ao carregar o áudio. Confira o nome e o formato do arquivo.";
+    });
 
-    window.speechSynthesis.speak(speech);
+    recipeAudio.play()
+      .then(() => {
+        audioStatus.textContent =
+          "A Chef Marcia está falando com você...";
+
+        timerStart.click();
+      })
+      .catch((erro) => {
+        audioStatus.textContent =
+          "Erro: " + erro.name + " — " + erro.message;
+        console.error("Falha no áudio:", erro);
+      });
+
+    return;
   }
+
+  // Mantém a narração do navegador para as demais receitas
+  if (!("speechSynthesis" in window)) {
+    audioStatus.textContent =
+      "Seu navegador não oferece narração por voz.";
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const step = recipe.steps[currentStep];
+
+  const text =
+    "Vamos continuar com nossa receita de " + recipe.title + ". " +
+    "Agora, nesta etapa, vamos " + step[0].toLowerCase() + ". " +
+    step[1] + ". " +
+    "A intensidade do fogo deve ser: " + step[2] + ". " +
+    "Uma dica importante do Chef: " + step[4];
+
+  const speech = new SpeechSynthesisUtterance(text);
+
+  speech.lang = "pt-BR";
+  speech.rate = 0.96;
+  speech.pitch = 1.04;
+  speech.volume = 1;
+
+  speech.onstart = () => {
+    audioStatus.textContent = "O Chef está falando com você...";
+  };
+
+  speech.onend = () => {
+    audioStatus.textContent = "Instrução finalizada.";
+  };
+
+  speech.onerror = () => {
+    audioStatus.textContent = "Não foi possível reproduzir a voz.";
+  };
+
+  window.speechSynthesis.speak(speech);
+}
+
 
   speakButton.addEventListener("click", speakCurrentStep);
   
