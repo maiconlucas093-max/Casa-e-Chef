@@ -1940,7 +1940,7 @@ if (recipeTitleElement) {
     timerStatus.textContent = "Temporizador reiniciado.";
   });
 
-  // Voz do navegador
+  // VOZ MAIS NATURAL E ACOLHEDORA
   const speakButton = document.getElementById("speakButton");
   const pauseAudioButton = document.getElementById("pauseAudioButton");
   const repeatButton = document.getElementById("repeatButton");
@@ -1952,33 +1952,81 @@ if (recipeTitleElement) {
     }
   }
 
+  // Transforma segundos em duração, nunca em horário do relógio
+  function formatSpeechDuration(seconds) {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+
+    const parts = [];
+
+    if (hours > 0) {
+      parts.push(hours + (hours === 1 ? " hora" : " horas"));
+    }
+
+    if (minutes > 0) {
+      parts.push(minutes + (minutes === 1 ? " minuto" : " minutos"));
+    }
+
+    if (secs > 0) {
+      parts.push(secs + (secs === 1 ? " segundo" : " segundos"));
+    }
+
+    return parts.length ? parts.join(" e ") : "menos de um segundo";
+  }
+
+  // Prioriza vozes brasileiras disponíveis
+  function getBrazilianVoice() {
+    const voices = window.speechSynthesis.getVoices();
+
+    const brazilianVoices = voices.filter(voice =>
+      voice.lang && voice.lang.toLowerCase() === "pt-br"
+    );
+
+    const preferredVoice = brazilianVoices.find(voice =>
+      /natural|neural|google|francisca|luciana/i.test(voice.name)
+    );
+
+    return preferredVoice || brazilianVoices[0] ||
+      voices.find(voice => voice.lang &&
+        voice.lang.toLowerCase().startsWith("pt")) || null;
+  }
+
   function speakCurrentStep() {
     if (!("speechSynthesis" in window)) {
-      audioStatus.textContent = "Seu navegador não oferece narração por voz.";
+      audioStatus.textContent =
+        "Seu navegador não oferece narração por voz.";
       return;
     }
 
     stopSpeech();
 
     const step = recipe.steps[currentStep];
+    const duration = formatSpeechDuration(step[3]);
+
     const text =
-      recipe.title + ". Etapa " + (currentStep + 1) + ". " +
-      step[0] + ". " + step[1] + ". Intensidade do fogo: " +
-      step[2] + ". Tempo sugerido: " + formatTime(step[3]) +
-      ". Dica do Chef: " + step[4];
+      "Vamos continuar com nossa receita de " + recipe.title + ". " +
+      "Agora, nesta etapa, vamos " + step[0].toLowerCase() + ". " +
+      step[1] + ". " +
+      "A intensidade do fogo deve ser: " + step[2] + ". " +
+      "O tempo aproximado para esta etapa é de " + duration + ". " +
+      "Uma dica importante do Chef: " + step[4];
 
     const speech = new SpeechSynthesisUtterance(text);
+
     speech.lang = "pt-BR";
-    speech.rate = 0.9;
+    speech.rate = 0.96;
+    speech.pitch = 1.04;
+    speech.volume = 1;
 
-    const voices = window.speechSynthesis.getVoices();
-    const voice = voices.find(v => v.lang.toLowerCase() === "pt-br") ||
-      voices.find(v => v.lang.toLowerCase().startsWith("pt"));
+    const voice = getBrazilianVoice();
 
-    if (voice) speech.voice = voice;
+    if (voice) {
+      speech.voice = voice;
+    }
 
     speech.onstart = () => {
-      audioStatus.textContent = "Lendo a instrução...";
+      audioStatus.textContent = "O Chef está falando com você...";
     };
 
     speech.onend = () => {
@@ -1990,6 +2038,13 @@ if (recipeTitleElement) {
     };
 
     window.speechSynthesis.speak(speech);
+  }
+
+  // Atualiza as vozes quando o navegador terminar de carregá-las
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.onvoiceschanged = () => {
+      getBrazilianVoice();
+    };
   }
 
   speakButton.addEventListener("click", speakCurrentStep);
@@ -2010,6 +2065,6 @@ if (recipeTitleElement) {
   });
 
   repeatButton.addEventListener("click", speakCurrentStep);
-
-  showStep();
+  
+   showStep();
 }
