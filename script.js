@@ -1947,59 +1947,142 @@ if (recipeTitleElement) {
     timerStatus.textContent = "Temporizador reiniciado.";
   });
 
-  // VOZ MAIS NATURAL E ACOLHEDORA
+
+  // NARRAÇÃO DO CHEF - ÁUDIO HEYGEN
   const speakButton = document.getElementById("speakButton");
   const pauseAudioButton = document.getElementById("pauseAudioButton");
   const repeatButton = document.getElementById("repeatButton");
   const audioStatus = document.getElementById("audioStatus");
 
+  // Áudio HeyGen exclusivo para Arroz soltinho
+  const recipeAudio = recipeKey === "arroz"
+    ? new Audio("heygen-speech.wav.mp3")
+    : null;
+
   function stopSpeech() {
-    if ("speechSynthesis" in window) {
+    if (recipeAudio) {
+      recipeAudio.pause();
+      recipeAudio.currentTime = 0;
+    } else if ("speechSynthesis" in window) {
       window.speechSynthesis.cancel();
     }
   }
 
-  // Transforma segundos em duração, nunca em horário do relógio
-  function formatSpeechDuration(seconds) {
-    const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
-    const secs = seconds % 60;
-
-    const parts = [];
-
-    if (hours > 0) {
-      parts.push(hours + (hours === 1 ? " hora" : " horas"));
-    }
-
-    if (minutes > 0) {
-      parts.push(minutes + (minutes === 1 ? " minuto" : " minutos"));
-    }
-
-    if (secs > 0) {
-      parts.push(secs + (secs === 1 ? " segundo" : " segundos"));
-    }
-
-    return parts.length ? parts.join(" e ") : "menos de um segundo";
-  }
-
-  // Prioriza vozes brasileiras disponíveis
-  function getBrazilianVoice() {
-    const voices = window.speechSynthesis.getVoices();
-
-    const brazilianVoices = voices.filter(voice =>
-      voice.lang && voice.lang.toLowerCase() === "pt-br"
-    );
-
-    const preferredVoice = brazilianVoices.find(voice =>
-      /natural|neural|google|francisca|luciana/i.test(voice.name)
-    );
-
-    return preferredVoice || brazilianVoices[0] ||
-      voices.find(voice => voice.lang &&
-        voice.lang.toLowerCase().startsWith("pt")) || null;
-  }
-
   function speakCurrentStep() {
+    // Reproduz a narração completa do arroz
+    if (recipeAudio) {
+      if (recipeAudio.ended) {
+        recipeAudio.currentTime = 0;
+      }
+
+      recipeAudio.play()
+        .then(() => {
+          audioStatus.textContent = "O Chef está narrando a receita...";
+        })
+        .catch(() => {
+          audioStatus.textContent =
+            "Não foi possível reproduzir o áudio. Verifique o arquivo.";
+        });
+
+      return;
+    }
+
+    // Mantém a narração original nas demais receitas
+    if (!("speechSynthesis" in window)) {
+      audioStatus.textContent =
+        "Seu navegador não oferece narração por voz.";
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    const step = recipe.steps[currentStep];
+
+    const text =
+      "Vamos continuar com nossa receita de " + recipe.title + ". " +
+      "Agora, nesta etapa, vamos " + step[0].toLowerCase() + ". " +
+      step[1] + ". " +
+      "A intensidade do fogo deve ser: " + step[2] + ". " +
+      "Uma dica importante do Chef: " + step[4];
+
+    const speech = new SpeechSynthesisUtterance(text);
+
+    speech.lang = "pt-BR";
+    speech.rate = 0.96;
+    speech.pitch = 1.04;
+    speech.volume = 1;
+
+    speech.onstart = () => {
+      audioStatus.textContent = "O Chef está falando com você...";
+    };
+
+    speech.onend = () => {
+      audioStatus.textContent = "Instrução finalizada.";
+    };
+
+    speech.onerror = () => {
+      audioStatus.textContent = "Não foi possível reproduzir a voz.";
+    };
+
+    window.speechSynthesis.speak(speech);
+  }
+
+  // Eventos do áudio HeyGen
+  if (recipeAudio) {
+    recipeAudio.addEventListener("ended", () => {
+      audioStatus.textContent = "Narração finalizada. Bom apetite!";
+    });
+
+    recipeAudio.addEventListener("error", () => {
+      audioStatus.textContent = "Erro ao carregar o áudio da receita.";
+    });
+  }
+
+  // Botão Ouvir
+  speakButton.addEventListener("click", speakCurrentStep);
+
+  // Botão Pausar / Continuar
+  pauseAudioButton.addEventListener("click", () => {
+    if (recipeAudio) {
+      if (recipeAudio.paused) {
+        recipeAudio.play()
+          .then(() => {
+            audioStatus.textContent = "Continuando a narração...";
+          })
+          .catch(() => {
+            audioStatus.textContent = "Não foi possível continuar o áudio.";
+          });
+      } else {
+        recipeAudio.pause();
+        audioStatus.textContent = "Narração pausada.";
+      }
+
+      return;
+    }
+
+    if (!("speechSynthesis" in window)) return;
+
+    if (window.speechSynthesis.speaking &&
+        !window.speechSynthesis.paused) {
+      window.speechSynthesis.pause();
+      audioStatus.textContent = "Narração pausada.";
+    } else if (window.speechSynthesis.paused) {
+      window.speechSynthesis.resume();
+      audioStatus.textContent = "Continuando narração.";
+    } else {
+      speakCurrentStep();
+    }
+  });
+
+  // Botão Repetir
+  repeatButton.addEventListener("click", () => {
+    if (recipeAudio) {
+      recipeAudio.currentTime = 0;
+    }
+
+    speakCurrentStep();
+  });
+        
 
   
    showStep();
