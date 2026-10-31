@@ -1561,9 +1561,7 @@ function createRecipeCard(key, recipe) {
   card.className = "recipe-card";
   card.dataset.category = recipe.category;
 
-  const link = document.createElement("a");
   
-
   const link = document.createElement("a");
   link.href = "receita.html?receita=" + encodeURIComponent(key);
   link.setAttribute("aria-label", "Abrir receita " + recipe.title);
