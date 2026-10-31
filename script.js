@@ -156,7 +156,7 @@ const recipes = {
       ["Finalize o molho", "Acrescente o molho de tomate, ajuste o sal e deixe cozinhar em fogo baixo por alguns minutos. Finalize com cheiro-verde a gosto.", "Fogo baixo", 240, "Deixe o molho apurar suavemente."],
       ["Misture e sirva", "Escorra o macarrão, reservando um pouco da água do cozimento se necessário. Misture a massa ao molho e sirva ainda quentinha.", "Fogo baixo", 60, "Envolva bem toda a massa no molho."]
 
-      ["Misture e sirva", "Escorra a massa com cuidado, misture ao molho e finalize com ervas.", "Fogo baixo", 60, "Sirva logo após o preparo."]
+     
     ]
   },
 
