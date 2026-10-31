@@ -2145,6 +2145,14 @@ function speakCurrentStep() {
       "frango-etapa-5.mp3"
     ],
     
+        omelete: [
+      "omelete-etapa-1.mp3",
+      "omelete-etapa-2.mp3",
+      "omelete-etapa-3.mp3",
+      "omelete-etapa-4.mp3",
+      "omelete-etapa-5.mp3"
+    ],
+    
     panqueca: [
   "panqueca-etapa-1.mp3",
   "panqueca-etapa-2.mp3",
