@@ -94,8 +94,7 @@ img{display:block;width:100%;object-fit:cover}
   scrollbar-width:none;
   padding:4px 2px 12px;
 }
-  padding:4px 2px 12px;
-}
+  
 .recipe-grid::-webkit-scrollbar{display:none}
 .recipe-card{
   min-width:0;
