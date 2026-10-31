@@ -2029,49 +2029,7 @@ if (recipeTitleElement) {
     const voice = getBrazilianVoice();
 
     if (voice) {
-      speech.voice = voice;
-    }
 
-    speech.onstart = () => {
-      audioStatus.textContent = "O Chef está falando com você...";
-    };
-
-    speech.onend = () => {
-      audioStatus.textContent = "Instrução finalizada.";
-    };
-
-    speech.onerror = () => {
-      audioStatus.textContent = "Não foi possível reproduzir a voz.";
-    };
-
-    window.speechSynthesis.speak(speech);
-  }
-
-  // Atualiza as vozes quando o navegador terminar de carregá-las
-  if ("speechSynthesis" in window) {
-    window.speechSynthesis.onvoiceschanged = () => {
-      getBrazilianVoice();
-    };
-  }
-
-  speakButton.addEventListener("click", speakCurrentStep);
-
-  pauseAudioButton.addEventListener("click", () => {
-    if (!("speechSynthesis" in window)) return;
-
-    if (window.speechSynthesis.speaking &&
-        !window.speechSynthesis.paused) {
-      window.speechSynthesis.pause();
-      audioStatus.textContent = "Narração pausada.";
-    } else if (window.speechSynthesis.paused) {
-      window.speechSynthesis.resume();
-      audioStatus.textContent = "Continuando narração.";
-    } else {
-      speakCurrentStep();
-    }
-  });
-
-  repeatButton.addEventListener("click", speakCurrentStep);
   
    showStep();
 }
