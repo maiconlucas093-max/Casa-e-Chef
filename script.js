@@ -2168,6 +2168,15 @@ function speakCurrentStep() {
       "pure-etapa-4.mp3",
       "pure-etapa-5.mp3"
     ],
+    
+        carne: [
+      "carne-etapa-1.mp3",
+      "carne-etapa-2.mp3",
+      "carne-etapa-3.mp3",
+      "carne-etapa-4.mp3",
+      "carne-etapa-5.mp3"
+    ],
+    
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
