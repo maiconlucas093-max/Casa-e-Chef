@@ -2034,10 +2034,10 @@ if (recipeTitleElement) {
     // Áudios HeyGen da Chef Marcia para as cinco etapas do arroz
     const arrozAudios = [
       "audio-etapa-1-ingredientes.wav",
-      "audio-etapa-2-refogar.mp3",
-      "audio-etapa-3-acrescentar-arroz.mp3",
-      "audio-etapa-4-cozinhar.mp3",
-      "audio-etapa-5-descansar.mp3"
+      "audio-etapa-2-refogar.wav",
+      "audio-etapa-3-acrescentar-arroz.wav",
+      "audio-etapa-4-cozinhar.wav",
+      "audio-etapa-5-descansar.wav"
     ];
 
     if (recipeKey === "arroz" && currentStep < arrozAudios.length) {
