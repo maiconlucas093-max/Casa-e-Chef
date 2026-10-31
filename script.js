@@ -2128,6 +2128,15 @@ function speakCurrentStep() {
       "audio-feijao-etapa-5.mp3"
     ],
     
+    macarrao: [
+      "audio-macarrao-etapa-1.mp3",
+      "audio-macarrao-etapa-2.mp3",
+      "audio-macarrao-etapa-3.mp3",
+      "audio-macarrao-etapa-4.mp3",
+      "audio-macarrao-etapa-5.mp3"
+    ],
+
+    
     frango: [
       "frango-etapa-1.mp3",
       "frango-etapa-2.mp3",
