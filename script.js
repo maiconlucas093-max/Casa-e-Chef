@@ -2121,9 +2121,11 @@ if (recipeTitleElement) {
             audioStatus.textContent = "Continuando a narração...";
             timerStart.click(); 
           })
-          .catch(() => {
-            audioStatus.textContent = "Não foi possível continuar o áudio.";
-          });
+          .catch((erro) => {
+  audioStatus.textContent =
+    "Erro: " + erro.name + " — " + erro.message;
+  console.error("Falha no áudio:", erro);
+});
       } else {
   recipeAudio.pause();
   timerPause.click();
