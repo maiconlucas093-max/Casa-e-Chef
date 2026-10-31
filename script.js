@@ -2184,6 +2184,15 @@ function speakCurrentStep() {
       "salada-etapa-5.mp3"
     ],
     
+        legumes: [
+      "legumes-etapa-1.mp3",
+      "legumes-etapa-2.mp3",
+      "legumes-etapa-3.mp3",
+      "legumes-etapa-4.mp3",
+      "legumes-etapa-5.mp3"
+    ],
+    
+    
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
