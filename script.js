@@ -1881,17 +1881,64 @@ if (recipeTitleElement) {
     timerDisplay.textContent = formatTime(Math.max(0, remainingSeconds));
   }
 
-  function stopTimer() 
     // SOM DE AVISO DO TEMPORIZADOR
   let timerAudioContext = null;
-  
+
   function prepareTimerSound() {
     const AudioContextClass =
       window.AudioContext || window.webkitAudioContext;
-    
+
     if (!timerAudioContext && AudioContextClass) {
       timerAudioContext = new AudioContextClass();
     }
+
+    if (
+      timerAudioContext &&
+      timerAudioContext.state === "suspended"
+    ) {
+      timerAudioContext.resume();
+    }
+  }
+
+  function playTimerSound() {
+    if (!timerAudioContext) return;
+
+    const oscillator = timerAudioContext.createOscillator();
+    const gain = timerAudioContext.createGain();
+
+    oscillator.type = "sine";
+    oscillator.frequency.setValueAtTime(
+      880,
+      timerAudioContext.currentTime
+    );
+
+    gain.gain.setValueAtTime(
+      0.001,
+      timerAudioContext.currentTime
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.18,
+      timerAudioContext.currentTime + 0.03
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+      0.001,
+      timerAudioContext.currentTime + 0.45
+    );
+
+    oscillator.connect(gain);
+    gain.connect(timerAudioContext.destination);
+
+    oscillator.start();
+    oscillator.stop(timerAudioContext.currentTime + 0.5);
+  }
+
+  function stopTimer() {
+    if (timerInterval !== null) clearInterval(timerInterval);
+    timerInterval = null;
+    timerDeadline = null;
+  }
     
     if (timerAudioContext &&
       timerAudioContext.state === "suspended") {
