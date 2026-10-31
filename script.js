@@ -2100,22 +2100,31 @@ if (recipeTitleElement) {
 function speakCurrentStep() {
   // Áudios HeyGen organizados por receita
   const audiosPorReceita = {
-    arroz: [
-      "audio-etapa-1-ingredientes.wav",
-      "audio-etapa-2-refogar.mp3",
-      "audio-etapa-3-acrescentar-arroz.mp3",
-      "audio-etapa-4-cozinhar.mp3",
-      "audio-etapa-5-descansar.mp3"
-    ],
-
-    feijao: [
-      "audio-feijao-etapa-1.mp3",
-      "audio-feijao-etapa-2.mp3",
-      "audio-feijao-etapa-3.mp3",
-      "audio-feijao-etapa-4.mp3",
-      "audio-feijao-etapa-5.mp3"
-    ]
-  };
+  arroz: [
+    "audio-etapa-1-ingredientes.wav",
+    "audio-etapa-2-refogar.mp3",
+    "audio-etapa-3-acrescentar-arroz.mp3",
+    "audio-etapa-4-cozinhar.mp3",
+    "audio-etapa-5-descansar.mp3"
+  ],
+  
+  feijao_caseiro: [
+    "audio-etapa-1-feijao.mp3",
+    "audio-etapa-2-feijao.mp3",
+    "audio-etapa-3-feijao.mp3",
+    "audio-etapa-4-feijao.mp3",
+    "audio-etapa-5-feijao.mp3",
+    "audio-etapa-6-feijao.mp3"
+  ],
+  
+  feijao: [
+    "audio-feijao-etapa-1.mp3",
+    "audio-feijao-etapa-2.mp3",
+    "audio-feijao-etapa-3.mp3",
+    "audio-feijao-etapa-4.mp3",
+    "audio-feijao-etapa-5.mp3"
+  ]
+};
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
 
