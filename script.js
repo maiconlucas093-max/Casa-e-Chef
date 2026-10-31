@@ -2143,7 +2143,15 @@ function speakCurrentStep() {
       "frango-etapa-3.mp3",
       "frango-etapa-4.mp3",
       "frango-etapa-5.mp3"
-    ]
+    ],
+    
+    panqueca: [
+  "panqueca-etapa-1.mp3",
+  "panqueca-etapa-2.mp3",
+  "panqueca-etapa-3.mp3",
+  "panqueca-etapa-4.mp3",
+  "panqueca-etapa-5.mp3"
+],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
