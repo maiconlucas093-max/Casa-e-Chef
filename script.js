@@ -1562,8 +1562,12 @@ function createRecipeCard(key, recipe) {
   card.dataset.category = recipe.category;
 
   const link = document.createElement("a");
+  
+
+  const link = document.createElement("a");
   link.href = "receita.html?receita=" + encodeURIComponent(key);
   link.setAttribute("aria-label", "Abrir receita " + recipe.title);
+  link.className = "recipe-card-image-link";
 
   const img = document.createElement("img");
   img.src = recipe.image;
@@ -1583,16 +1587,18 @@ function createRecipeCard(key, recipe) {
   const description = document.createElement("p");
   description.textContent = recipe.description;
 
-  const action = document.createElement("span");
+  const action = document.createElement("a");
   action.className = "recipe-link";
+  action.href = "receita.html?receita=" + encodeURIComponent(key);
   action.textContent = "Ver receita →";
+  action.setAttribute("aria-label", "Ver receita " + recipe.title);
 
-  
   link.appendChild(img);
   content.append(tag, title, description, action);
-  link.appendChild(content);
-  card.appendChild(link);
+  card.append(link, content);
 
+  return card;
+  
 
   return card;
 }
