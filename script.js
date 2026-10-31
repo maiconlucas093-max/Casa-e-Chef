@@ -2063,10 +2063,11 @@ if (recipeTitleElement) {
 
           timerStart.click();
         })
-        .catch(() => {
-          audioStatus.textContent =
-            "Não foi possível reproduzir o áudio.";
-        });
+        .catch((erro) => {
+  audioStatus.textContent =
+    "Erro: " + erro.name + " — " + erro.message;
+  console.error("Falha no áudio:", erro);
+});
 
       return;
     }
