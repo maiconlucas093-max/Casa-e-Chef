@@ -2192,6 +2192,14 @@ function speakCurrentStep() {
       "legumes-etapa-5.mp3"
     ],
     
+        sopa: [
+      "sopa-etapa-1.mp3",
+      "sopa-etapa-2.mp3",
+      "sopa-etapa-3.mp3",
+      "sopa-etapa-4.mp3",
+      "sopa-etapa-5.mp3"
+    ],
+    
     
   };
 
