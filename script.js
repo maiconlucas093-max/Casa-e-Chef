@@ -1,5 +1,5 @@
 // ============================================
-// CHEF EM CASA — 84 RECEITAS E CARROSSEL 2x2
+// CHEF EM CASA — 85 RECEITAS E CARROSSEL 2x2
 // ============================================
 
 const menuToggle = document.getElementById("menuToggle");
@@ -16,7 +16,7 @@ if (menuToggle && mainNav) {
 }
 
 // ============================================
-// BANCO COM 84 RECEITAS
+// BANCO COM 85 RECEITAS
 // ============================================
 
 const recipes = {
@@ -37,14 +37,79 @@ const recipes = {
       ["Descanse e sirva", "Desligue, tampe por alguns minutos e solte os grãos com um garfo.", "Fogo desligado", 300, "Deixe o arroz descansar antes de servir."]
     ]
   },
+    feijao_caseiro: {
+    title: "Feijão caseiro tradicional",
+    category: "basicas almoco",
+    time: "1h30 + molho",
+    difficulty: "Fácil",
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
+    description: "Aprenda a preparar feijão carioca seco, desde a escolha dos grãos até o cozimento e o tempero final.",
+    seasoning: "Alho, cebola, louro e cheiro-verde deixam o feijão caseiro ainda mais saboroso.",
+    ingredients: [
+      "2 xícaras de feijão carioca seco",
+      "Água para lavar e deixar de molho",
+      "Água nova para cozinhar",
+      "2 dentes de alho picados",
+      "1/2 cebola picada",
+      "1 colher de óleo",
+      "1 folha de louro",
+      "Sal a gosto",
+      "Cheiro-verde a gosto (opcional)"
+    ],
+    steps: [
+      [
+        "Escolha e lave o feijão",
+        "Espalhe os grãos em uma superfície limpa e retire pedrinhas, grãos danificados ou impurezas. Depois, lave em água corrente.",
+        "Sem fogo",
+        180,
+        "Escolher os grãos com atenção é o primeiro cuidado para um bom feijão."
+      ],
+      [
+        "Deixe o feijão de molho",
+        "Coloque os grãos em uma tigela grande e cubra com bastante água. Deixe de molho por 8 a 12 horas. Depois, descarte essa água e lave os grãos novamente.",
+        "Sem fogo",
+        28800,
+        "O molho ajuda a hidratar os grãos e pode favorecer um cozimento mais uniforme."
+      ],
+      [
+        "Prepare a panela de pressão",
+        "Coloque o feijão escorrido na panela e acrescente água nova suficiente para cobrir os grãos com folga. Respeite o limite máximo indicado pelo fabricante.",
+        "Fogo desligado",
+        120,
+        "Nunca ultrapasse o limite de enchimento da panela de pressão."
+      ],
+      [
+        "Cozinhe o feijão",
+        "Feche a panela conforme as instruções do fabricante. Quando atingir pressão, reduza o fogo e cozinhe por aproximadamente 20 a 30 minutos. O tempo varia conforme o tipo e a idade dos grãos.",
+        "Fogo alto até pegar pressão; depois fogo baixo",
+        1800,
+        "Não tente abrir a panela enquanto estiver pressurizada."
+      ],
+      [
+        "Confira se os grãos estão macios",
+        "Desligue o fogo e espere toda a pressão sair naturalmente antes de abrir a panela. Confira a textura dos grãos. Se ainda estiverem duros, cozinhe por mais alguns minutos, seguindo as instruções de segurança.",
+        "Fogo desligado",
+        300,
+        "Nunca force a abertura da panela de pressão."
+      ],
+      [
+        "Tempere e finalize",
+        "Em outra panela, aqueça o óleo e refogue a cebola e o alho. Acrescente o feijão cozido com parte do caldo, coloque o louro e o sal. Deixe ferver suavemente até o caldo ficar saboroso. Finalize com cheiro-verde, se desejar.",
+        "Fogo médio e depois baixo",
+        600,
+        "Experimente e ajuste o sal antes de servir."
+      ]
+    ]
+  },
+  
 
   feijao: {
-    title: "Feijão caseiro",
+    title: "Como temperar feijão cozido",
     category: "basicas almoco",
     time: "40 min",
     difficulty: "Fácil",
     image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
-    description: "Feijão bem temperado para acompanhar o almoço.",
+    description: "Aprenda a fazer um refogado saboroso e transformar o feijão cozido em um acompanhamento delicioso.",
     seasoning: "Alho, cebola, louro e cheiro-verde combinam muito bem com feijão.",
     ingredients: ["2 xícaras de feijão cozido", "2 dentes de alho", "1/2 cebola", "1 colher de óleo", "1 folha de louro", "Sal a gosto"],
     steps: [
