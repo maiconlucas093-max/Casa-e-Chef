@@ -1821,6 +1821,7 @@ if (recipeTitleElement) {
     stepFire.textContent = step[2];
     stepTime.textContent = formatTime(step[3]);
     stepTip.textContent = "Dica do Chef: " + step[4];
+    timerPurpose.textContent = "Atividade prevista: " + step[0] + ".";
 
     stepCounter.textContent =
       "Etapa " + (currentStep + 1) + " de " + recipe.steps.length;
@@ -1872,6 +1873,7 @@ if (recipeTitleElement) {
   const timerStart = document.getElementById("timerStart");
   const timerPause = document.getElementById("timerPause");
   const timerReset = document.getElementById("timerReset");
+    const timerPurpose = document.getElementById("timerPurpose");
 
   let remainingSeconds = recipe.steps[0][3];
   let timerInterval = null;
