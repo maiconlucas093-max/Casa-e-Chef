@@ -521,4 +521,29 @@ img{display:block;width:100%;object-fit:cover}
   min-width: 0;
   width: 100%;
 }
+/* FINALIDADE DO TEMPO NO TEMPORIZADOR */
+.timer-purpose {
+  background: #f7f6f1;
+  border-left: 3px solid var(--gold);
+  border-radius: 4px;
+  padding: 14px 15px;
+  margin: 16px 0 10px;
+  text-align: left;
+}
 
+.timer-purpose small {
+  display: block;
+  color: #a18450;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-bottom: 7px;
+}
+
+.timer-purpose p {
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.6;
+  margin: 0;
+}
