@@ -2200,6 +2200,15 @@ function speakCurrentStep() {
       "sopa-etapa-5.mp3"
     ],
     
+        farofa: [
+      "farofa-etapa-1.mp3",
+      "farofa-etapa-2.mp3",
+      "farofa-etapa-3.mp3",
+      "farofa-etapa-4.mp3",
+      "farofa-etapa-5.mp3"
+    ],
+    
+    
     
   };
 
