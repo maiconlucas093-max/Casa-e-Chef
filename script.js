@@ -2118,13 +2118,21 @@ function speakCurrentStep() {
   ],
   
   feijao: [
-    "audio-feijao-etapa-1.mp3",
-    "audio-feijao-etapa-2.mp3",
-    "audio-feijao-etapa-3.mp3",
-    "audio-feijao-etapa-4.mp3",
-    "audio-feijao-etapa-5.mp3"
-  ]
-};
+      "audio-feijao-etapa-1.mp3",
+      "audio-feijao-etapa-2.mp3",
+      "audio-feijao-etapa-3.mp3",
+      "audio-feijao-etapa-4.mp3",
+      "audio-feijao-etapa-5.mp3"
+    ],
+    
+    frango: [
+      "frango-etapa-1.mp3",
+      "frango-etapa-2.mp3",
+      "frango-etapa-3.mp3",
+      "frango-etapa-4.mp3",
+      "frango-etapa-5.mp3"
+    ]
+  };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
 
