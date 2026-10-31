@@ -1587,9 +1587,12 @@ function createRecipeCard(key, recipe) {
   action.className = "recipe-link";
   action.textContent = "Ver receita →";
 
+  
   link.appendChild(img);
   content.append(tag, title, description, action);
-  card.append(link, content);
+  link.appendChild(content);
+  card.appendChild(link);
+
 
   return card;
 }
