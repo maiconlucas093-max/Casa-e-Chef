@@ -2160,6 +2160,14 @@ function speakCurrentStep() {
   "panqueca-etapa-4.mp3",
   "panqueca-etapa-5.mp3"
 ],
+
+    pure: [
+      "pure-etapa-1.mp3",
+      "pure-etapa-2.mp3",
+      "pure-etapa-3.mp3",
+      "pure-etapa-4.mp3",
+      "pure-etapa-5.mp3"
+    ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
