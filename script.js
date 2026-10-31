@@ -2176,6 +2176,13 @@ function speakCurrentStep() {
       "carne-etapa-4.mp3",
       "carne-etapa-5.mp3"
     ],
+        salada: [
+      "salada-etapa-1.mp3",
+      "salada-etapa-2.mp3",
+      "salada-etapa-3.mp3",
+      "salada-etapa-4.mp3",
+      "salada-etapa-5.mp3"
+    ],
     
   };
 
