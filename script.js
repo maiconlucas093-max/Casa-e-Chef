@@ -2000,35 +2000,6 @@ if (recipeTitleElement) {
   }
 
   function speakCurrentStep() {
-    if (!("speechSynthesis" in window)) {
-      audioStatus.textContent =
-        "Seu navegador não oferece narração por voz.";
-      return;
-    }
-
-    stopSpeech();
-
-    const step = recipe.steps[currentStep];
-    const duration = formatSpeechDuration(step[3]);
-
-    const text =
-      "Vamos continuar com nossa receita de " + recipe.title + ". " +
-      "Agora, nesta etapa, vamos " + step[0].toLowerCase() + ". " +
-      step[1] + ". " +
-      "A intensidade do fogo deve ser: " + step[2] + ". " +
-      "O tempo aproximado para esta etapa é de " + duration + ". " +
-      "Uma dica importante do Chef: " + step[4];
-
-    const speech = new SpeechSynthesisUtterance(text);
-
-    speech.lang = "pt-BR";
-    speech.rate = 0.96;
-    speech.pitch = 1.04;
-    speech.volume = 1;
-
-    const voice = getBrazilianVoice();
-
-    if (voice) {
 
   
    showStep();
