@@ -1954,6 +1954,7 @@ if (recipeTitleElement) {
 
     if (remainingSeconds <= 0) {
       stopTimer();
+      playTimerSound();
       timerStatus.textContent = "Tempo encerrado! Confira o preparo.";
 
       if ("vibrate" in navigator) navigator.vibrate([200, 100, 200]);
