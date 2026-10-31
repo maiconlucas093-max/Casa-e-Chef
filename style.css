@@ -548,25 +548,29 @@ img{display:block;width:100%;object-fit:cover}
   margin: 0;
 }
 
-/* BOTÕES DOS CONTROLES DA RECEITA */
-.recipe-page .button-outline {
-  background: #f3f3ee;
-  border: 1px solid #d8d4c8;
-  color: #173b2c;
+
+/* CORREÇÃO DIRETA DOS BOTÕES DA RECEITA */
+
+body.recipe-page #timerPause,
+body.recipe-page #timerReset {
+  background-color: #173b2c !important;
+  color: #ffffff !important;
+  border: 1px solid #173b2c !important;
+  opacity: 1 !important;
 }
 
-/* Efeito ao tocar ou passar o mouse */
-.recipe-page .button-outline:hover:not(:disabled) {
-  background: #e8e5da;
-  border-color: #b99a60;
+body.recipe-page #previousStep:not(:disabled) {
+  background-color: #173b2c !important;
+  color: #ffffff !important;
+  border: 1px solid #173b2c !important;
+  opacity: 1 !important;
 }
 
-/* Botões realmente desativados */
-.recipe-page .button:disabled {
-  background: #e9e9e9;
-  border-color: #dddddd;
-  color: #888888;
-  opacity: 1;
-  cursor: not-allowed;
+body.recipe-page #previousStep:disabled {
+  background-color: #e9e9e9 !important;
+  color: #888888 !important;
+  border: 1px solid #dddddd !important;
+  opacity: 1 !important;
 }
+
 
