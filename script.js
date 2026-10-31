@@ -149,10 +149,13 @@ const recipes = {
     seasoning: "Manjericão, orégano e alho deixam o molho mais aromático.",
     ingredients: ["250 g de macarrão", "Molho de tomate", "2 dentes de alho", "1/2 cebola", "Azeite", "Sal e orégano"],
     steps: [
-      ["Separe os ingredientes", "Organize a massa, o molho, o alho, a cebola e os temperos.", "Sem fogo", 60, "Leia o tempo indicado na embalagem."],
-      ["Ferva a água", "Coloque água em uma panela e aqueça até levantar fervura.", "Fogo alto", 300, "Use uma panela com espaço para a massa."],
-      ["Cozinhe o macarrão", "Adicione sal e a massa. Mexa no início e cozinhe conforme a embalagem.", "Médio-alto", 480, "Experimente para conferir a textura."],
-      ["Prepare o molho", "Refogue cebola e alho no azeite. Acrescente o molho de tomate e os temperos.", "Fogo médio", 240, "Deixe o molho apurar suavemente."],
+    
+      ["Separe os ingredientes", "Organize o macarrão, o molho de tomate, o alho, a cebola, o azeite e os temperos. Pique o alho e a cebola antes de começar.", "Sem fogo", 60, "Deixe tudo separado para facilitar o preparo."],
+      ["Cozinhe o macarrão", "Coloque bastante água em uma panela. Quando ferver, adicione sal e o macarrão. Cozinhe conforme as instruções da embalagem até ficar macio, mas firme.", "Fogo alto", 480, "Mexa no início para evitar que a massa grude."],
+      ["Prepare a base do molho", "Em outra panela, aqueça um fio de azeite. Acrescente a cebola e refogue até ficar transparente. Depois coloque o alho e mexa rapidamente.", "Fogo médio", 180, "Não deixe o alho queimar."],
+      ["Finalize o molho", "Acrescente o molho de tomate, ajuste o sal e deixe cozinhar em fogo baixo por alguns minutos. Finalize com cheiro-verde a gosto.", "Fogo baixo", 240, "Deixe o molho apurar suavemente."],
+      ["Misture e sirva", "Escorra o macarrão, reservando um pouco da água do cozimento se necessário. Misture a massa ao molho e sirva ainda quentinha.", "Fogo baixo", 60, "Envolva bem toda a massa no molho."]
+
       ["Misture e sirva", "Escorra a massa com cuidado, misture ao molho e finalize com ervas.", "Fogo baixo", 60, "Sirva logo após o preparo."]
     ]
   },
