@@ -85,9 +85,8 @@ img{display:block;width:100%;object-fit:cover}
 
 /* CARROSSEL: 2 COLUNAS X 2 LINHAS POR PÁGINA */
 .recipe-carousel-window{width:100%;overflow:hidden}
-.recipe-grid{
-  display:grid;
-  grid-auto-flow:column;
+  display:flex;
+  flex-wrap:nowrap;
   grid-auto-columns:100%;
   grid-template-rows:repeat(2,minmax(0,1fr));
   grid-template-columns:unset;
