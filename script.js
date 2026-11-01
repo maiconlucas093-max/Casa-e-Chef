@@ -2427,6 +2427,13 @@ function speakCurrentStep() {
         "macarraoAlhoOleo-etapa-4.mp3",
         "macarraoAlhoOleo-etapa-5.mp3"
       ],
+                  macarraoForno: [
+        "macarraoForno-etapa-1.mp3",
+        "macarraoForno-etapa-2.mp3",
+        "macarraoForno-etapa-3.mp3",
+        "macarraoForno-etapa-4.mp3",
+        "macarraoForno-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
