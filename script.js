@@ -2386,6 +2386,14 @@ function speakCurrentStep() {
         "linguicaAcebolada-etapa-4.mp3",
         "linguicaAcebolada-etapa-5.mp3"
       ],
+      
+            peixeForno: [
+        "peixeForno-etapa-1.mp3",
+        "peixeForno-etapa-2.mp3",
+        "peixeForno-etapa-3.mp3",
+        "peixeForno-etapa-4.mp3",
+        "peixeForno-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
