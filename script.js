@@ -2256,6 +2256,13 @@ function speakCurrentStep() {
       "tapioca-etapa-5.mp3"
     ],
     
+        peixe: [
+      "peixe-etapa-1.mp3",
+      "peixe-etapa-2.mp3",
+      "peixe-etapa-3.mp3",
+      "peixe-etapa-4.mp3",
+      "peixe-etapa-5.mp3"
+    ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
