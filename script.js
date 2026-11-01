@@ -2248,6 +2248,13 @@ function speakCurrentStep() {
       "cuscuz-etapa-5.mp3"
     ],
     
+        tapioca: [
+      "tapioca-etapa-1.mp3",
+      "tapioca-etapa-2.mp3",
+      "tapioca-etapa-3.mp3",
+      "tapioca-etapa-4.mp3",
+      "tapioca-etapa-5.mp3"
+    ],
     
   };
 
