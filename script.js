@@ -2379,31 +2379,7 @@ function speakCurrentStep() {
       "auditext-agora-acomode-as-rodelas-de-banana-sobre.mp3",
       "auditext-cozinhe-at-as-bananas-ficarem-macias-mas.mp3"
     ],
-        linguicaAcebolada: [
-      "linguicaAcebolada-etapa-1.mp3",
-      "linguicaAcebolada-etapa-2.mp3",
-      "linguicaAcebolada-etapa-3.mp3",
-      "linguicaAcebolada-etapa-4.mp3",
-      "linguicaAcebolada-etapa-5.mp3"
-    ],
-    
-        peixeForno: [
-      "peixeForno-etapa-1.mp3",
-      "peixeForno-etapa-2.mp3",
-      "peixeForno-etapa-3.mp3",
-      "peixeForno-etapa-4.mp3",
-      "peixeForno-etapa-5.mp3"
-    ],
-    
-          moquecaBanana: [
-        "moquecaBanana-etapa-1.mp3",
-        "moquecaBanana-etapa-2.mp3",
-        "moquecaBanana-etapa-3.mp3",
-        "moquecaBanana-etapa-4.mp3",
-        "moquecaBanana-etapa-5.mp3"
-      ],
-    
-  };
+     };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
 
