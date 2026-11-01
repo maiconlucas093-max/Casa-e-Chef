@@ -2434,6 +2434,14 @@ function speakCurrentStep() {
         "macarraoForno-etapa-4.mp3",
         "macarraoForno-etapa-5.mp3"
       ],
+      
+            nhoqueBatata: [
+        "nhoqueBatata-etapa-1.mp3",
+        "nhoqueBatata-etapa-2.mp3",
+        "nhoqueBatata-etapa-3.mp3",
+        "nhoqueBatata-etapa-4.mp3",
+        "nhoqueBatata-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
