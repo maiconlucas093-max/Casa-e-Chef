@@ -2450,6 +2450,14 @@ function speakCurrentStep() {
         "pizzaFrigideira-etapa-4.mp3",
         "pizzaFrigideira-etapa-5.mp3"
       ],
+      
+            saladaGraoBico: [
+        "saladaGraoBico-etapa-1.mp3",
+        "saladaGraoBico-etapa-2.mp3",
+        "saladaGraoBico-etapa-3.mp3",
+        "saladaGraoBico-etapa-4.mp3",
+        "saladaGraoBico-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
