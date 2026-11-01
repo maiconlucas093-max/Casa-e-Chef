@@ -2295,6 +2295,14 @@ function speakCurrentStep() {
       "vitamina-etapa-4.mp3",
       "vitamina-etapa-5.mp3"
     ],
+    
+        paoQueijo: [
+      "paoQueijo-etapa-1.mp3",
+      "paoQueijo-etapa-2.mp3",
+      "paoQueijo-etapa-3.mp3",
+      "paoQueijo-etapa-4.mp3",
+      "paoQueijo-etapa-5.mp3"
+    ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
