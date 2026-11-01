@@ -2240,6 +2240,14 @@ function speakCurrentStep() {
       "pudim-etapa-5.mp3"
     ],
     
+        cuscuz: [
+      "cuscuz-etapa-1.mp3",
+      "cuscuz-etapa-2.mp3",
+      "cuscuz-etapa-3.mp3",
+      "cuscuz-etapa-4.mp3",
+      "cuscuz-etapa-5.mp3"
+    ],
+    
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
