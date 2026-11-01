@@ -2394,6 +2394,13 @@ function speakCurrentStep() {
         "peixeForno-etapa-4.mp3",
         "peixeForno-etapa-5.mp3"
       ],
+            moquecaBanana: [
+        "moquecaBanana-etapa-1.mp3",
+        "moquecaBanana-etapa-2.mp3",
+        "moquecaBanana-etapa-3.mp3",
+        "moquecaBanana-etapa-4.mp3",
+        "moquecaBanana-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
