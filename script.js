@@ -2357,6 +2357,14 @@ function speakCurrentStep() {
     "bifeAcebolado-etapa-4.mp3",
     "bifeAcebolado-etapa-5.mp3"
   ],
+  
+    almondigasMolho: [
+    "almondigasMolho-etapa-1.mp3",
+    "almondigasMolho-etapa-2.mp3",
+    "almondigasMolho-etapa-3.mp3",
+    "almondigasMolho-etapa-4.mp3",
+    "almondigasMolho-etapa-5.mp3"
+  ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
