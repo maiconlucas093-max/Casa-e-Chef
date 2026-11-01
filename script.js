@@ -2419,6 +2419,14 @@ function speakCurrentStep() {
         "lasanhaBolonhesa-etapa-4.mp3",
         "lasanhaBolonhesa-etapa-5.mp3"
       ],
+      
+                  macarraoAlhoOleo: [
+        "macarraoAlhoOleo-etapa-1.mp3",
+        "macarraoAlhoOleo-etapa-2.mp3",
+        "macarraoAlhoOleo-etapa-3.mp3",
+        "macarraoAlhoOleo-etapa-4.mp3",
+        "macarraoAlhoOleo-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
