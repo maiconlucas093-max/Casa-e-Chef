@@ -2216,6 +2216,15 @@ function speakCurrentStep() {
       "batata-etapa-5.mp3"
     ],
     
+        bolo: [
+      "bolo-etapa-1.mp3",
+      "bolo-etapa-2.mp3",
+      "bolo-etapa-3.mp3",
+      "bolo-etapa-4.mp3",
+      "bolo-etapa-5.mp3"
+    ],
+    
+    
     
   };
 
