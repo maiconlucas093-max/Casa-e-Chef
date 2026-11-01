@@ -2442,6 +2442,14 @@ function speakCurrentStep() {
         "nhoqueBatata-etapa-4.mp3",
         "nhoqueBatata-etapa-5.mp3"
       ],
+      
+            pizzaFrigideira: [
+        "pizzaFrigideira-etapa-1.mp3",
+        "pizzaFrigideira-etapa-2.mp3",
+        "pizzaFrigideira-etapa-3.mp3",
+        "pizzaFrigideira-etapa-4.mp3",
+        "pizzaFrigideira-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
