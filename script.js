@@ -2224,6 +2224,14 @@ function speakCurrentStep() {
       "bolo-etapa-5.mp3"
     ],
     
+        brigadeiro: [
+      "brigadeiro-etapa-1.mp3",
+      "brigadeiro-etapa-2.mp3",
+      "brigadeiro-etapa-3.mp3",
+      "brigadeiro-etapa-4.mp3",
+      "brigadeiro-etapa-5.mp3"
+    ],
+    
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
