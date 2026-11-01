@@ -2271,6 +2271,14 @@ function speakCurrentStep() {
       "frangoForno-etapa-4.mp3",
       "frangoForno-etapa-5.mp3"
     ],
+    
+        arrozLegumes: [
+      "arrozLegumes-etapa-1.mp3",
+      "arrozLegumes-etapa-2.mp3",
+      "arrozLegumes-etapa-3.mp3",
+      "arrozLegumes-etapa-4.mp3",
+      "arrozLegumes-etapa-5.mp3"
+    ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
