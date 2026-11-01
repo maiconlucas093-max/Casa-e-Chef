@@ -2350,6 +2350,13 @@ function speakCurrentStep() {
     "carneMoidaBatata-etapa-4.mp3",
     "carneMoidaBatata-etapa-5.mp3"
   ],
+    bifeAcebolado: [
+    "bifeAcebolado-etapa-1.mp3",
+    "bifeAcebolado-etapa-2.mp3",
+    "bifeAcebolado-etapa-3.mp3",
+    "bifeAcebolado-etapa-4.mp3",
+    "bifeAcebolado-etapa-5.mp3"
+  ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
