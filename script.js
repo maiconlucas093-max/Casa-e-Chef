@@ -2248,6 +2248,7 @@ function speakCurrentStep() {
       "cuscuz-etapa-5.mp3"
     ],
     
+    
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
