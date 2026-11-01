@@ -2311,6 +2311,14 @@ function speakCurrentStep() {
   "frangoCremeMilho-etapa-4.mp3",
   "frangoCremeMilho-etapa-5.mp3"
 ],
+
+  frangoMostarda: [
+    "frangoMostarda-etapa-1.mp3",
+    "frangoMostarda-etapa-2.mp3",
+    "frangoMostarda-etapa-3.mp3",
+    "frangoMostarda-etapa-4.mp3",
+    "frangoMostarda-etapa-5.mp3"
+  ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
