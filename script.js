@@ -2336,6 +2336,13 @@ function speakCurrentStep() {
     "frangoXadrez-etapa-5.mp3"
   ],
   
+    escondidinhoCarne: [
+    "escondidinhoCarne-etapa-1.mp3",
+    "escondidinhoCarne-etapa-2.mp3",
+    "escondidinhoCarne-etapa-3.mp3",
+    "escondidinhoCarne-etapa-4.mp3",
+    "escondidinhoCarne-etapa-5.mp3"
+  ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
