@@ -2343,6 +2343,13 @@ function speakCurrentStep() {
     "escondidinhoCarne-etapa-4.mp3",
     "escondidinhoCarne-etapa-5.mp3"
   ],
+    carneMoidaBatata: [
+    "carneMoidaBatata-etapa-1.mp3",
+    "carneMoidaBatata-etapa-2.mp3",
+    "carneMoidaBatata-etapa-3.mp3",
+    "carneMoidaBatata-etapa-4.mp3",
+    "carneMoidaBatata-etapa-5.mp3"
+  ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
