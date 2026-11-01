@@ -2372,6 +2372,14 @@ function speakCurrentStep() {
     "costelinhaForno-etapa-4.mp3",
     "costelinhaForno-etapa-5.mp3"
   ],
+      moquecaBanana: [
+      "auditext-hoje-vamos-preparar-uma-deliciosa-moquec.mp3",
+      "auditext-descasque-as-bananas-da-terra-e-corte-em.mp3",
+      "auditext-em-uma-panela-aque-a-um-fio-de-azeite-e-.mp3",
+      "auditext-agora-acomode-as-rodelas-de-banana-sobre.mp3",
+      "auditext-cozinhe-at-as-bananas-ficarem-macias-mas.mp3"
+    ],
+    
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
