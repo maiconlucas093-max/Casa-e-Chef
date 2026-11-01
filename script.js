@@ -2263,6 +2263,14 @@ function speakCurrentStep() {
       "peixe-etapa-4.mp3",
       "peixe-etapa-5.mp3"
     ],
+    
+        frangoForno: [
+      "frangoForno-etapa-1.mp3",
+      "frangoForno-etapa-2.mp3",
+      "frangoForno-etapa-3.mp3",
+      "frangoForno-etapa-4.mp3",
+      "frangoForno-etapa-5.mp3"
+    ],
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
