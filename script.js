@@ -2232,6 +2232,14 @@ function speakCurrentStep() {
       "brigadeiro-etapa-5.mp3"
     ],
     
+        pudim: [
+      "pudim-etapa-1.mp3",
+      "pudim-etapa-2.mp3",
+      "pudim-etapa-3.mp3",
+      "pudim-etapa-4.mp3",
+      "pudim-etapa-5.mp3"
+    ],
+    
   };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
