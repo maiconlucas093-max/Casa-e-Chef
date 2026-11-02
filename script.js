@@ -1707,13 +1707,15 @@ addButton.addEventListener("click", () => {
 function syncMenuButtons() {
   document.querySelectorAll(".menu-add-button").forEach(button => {
     const isAdded = menuRecipeKeys.includes(button.dataset.recipeKey);
-
-    button.textContent = isAdded
-      ? "Adicionada ✓"
-      : "＋ Adicionar ao meu cardápio";
-
+    
+    button.textContent = isAdded ?
+      "Adicionada ✓" :
+      "＋ Adicionar ao meu cardápio";
+    
     button.classList.toggle("added", isAdded);
   });
+  
+  renderShoppingList();
 }
 
 function renderMealPlan() {
