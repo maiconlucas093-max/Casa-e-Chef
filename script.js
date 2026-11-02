@@ -1989,12 +1989,14 @@ function renderShoppingList() {
     checkbox.checked = purchasedShoppingItems.has(key);
 
     checkbox.addEventListener("change", () => {
-      if (checkbox.checked) {
-        purchasedShoppingItems.add(key);
-      } else {
-        purchasedShoppingItems.delete(key);
-      }
-    });
+  if (checkbox.checked) {
+    purchasedShoppingItems.add(key);
+  } else {
+    purchasedShoppingItems.delete(key);
+  }
+  
+  savePurchasedItems();
+});
 
     const content = document.createElement("span");
     content.className = "shopping-list-item-content";
