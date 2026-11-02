@@ -2065,9 +2065,11 @@ function renderMealPlan() {
     );
 
     removeButton.addEventListener("click", () => {
-      menuRecipeKeys = menuRecipeKeys.filter(itemKey => itemKey !== key);
-      renderMealPlan();
-    });
+  menuRecipeKeys = menuRecipeKeys.filter(itemKey => itemKey !== key);
+  
+  saveMenuRecipes();
+  renderMealPlan();
+});
 
     info.append(title, details);
     item.append(info, removeButton);
