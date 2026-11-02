@@ -1669,10 +1669,48 @@ function createRecipeCard(key, recipe) {
   return card;
 }
 
+// ============================================
+// CATEGORIA: CARNES & PEIXES
+// ============================================
+
+const carnesPeixesRecipes = new Set([
+  "frango",
+  "carne",
+  "peixe",
+  "frangoForno",
+  "frangoCremeMilho",
+  "frangoMostarda",
+  "frangoParmegiana",
+  "frangoXadrez",
+  "escondidinhoCarne",
+  "carneMoidaBatata",
+  "bifeAcebolado",
+  "almondigasMolho",
+  "costelinhaForno",
+  "linguicaAcebolada",
+  "peixeForno",
+  "lasanhaBolonhesa",
+  "salpicaoFrango",
+  "cuscuzRecheado",
+  "caldoVerde",
+  "arrozCarreteiro",
+  "feijaoTropeiro",
+  "tortaLiquidificador",
+  "empadaFrango"
+]);
+
 function getFilteredRecipes() {
   return Object.entries(recipes).filter(([key, recipe]) => {
-    return currentFilter === "todas" ||
-      recipe.category.split(" ").includes(currentFilter);
+    
+    if (currentFilter === "todas") {
+      return true;
+    }
+    
+    if (currentFilter === "carnesPeixes") {
+      return carnesPeixesRecipes.has(key);
+    }
+    
+    return recipe.category.split(" ").includes(currentFilter);
   });
 }
 
