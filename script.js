@@ -1624,12 +1624,16 @@ if (recipeGrid) {
   recipeGrid.style.gap = "0";
 }
 
+
+// Receitas selecionadas para o cardápio
+// Nesta etapa, a seleção fica apenas na memória da página.
+let menuRecipeKeys = [];
+
 function createRecipeCard(key, recipe) {
   const card = document.createElement("article");
   card.className = "recipe-card";
   card.dataset.category = recipe.category;
 
-  
   const link = document.createElement("a");
   link.href = "receita.html?receita=" + encodeURIComponent(key);
   link.setAttribute("aria-label", "Abrir receita " + recipe.title);
@@ -1659,15 +1663,33 @@ function createRecipeCard(key, recipe) {
   action.textContent = "Ver receita →";
   action.setAttribute("aria-label", "Ver receita " + recipe.title);
 
+  const addButton = document.createElement("button");
+  addButton.type = "button";
+  addButton.className = "menu-add-button";
+  addButton.textContent = menuRecipeKeys.includes(key)
+    ? "Adicionada ✓"
+    : "＋ Adicionar ao meu cardápio";
+
+  if (menuRecipeKeys.includes(key)) {
+    addButton.classList.add("added");
+  }
+
+  addButton.addEventListener("click", () => {
+    if (!menuRecipeKeys.includes(key)) {
+      menuRecipeKeys.push(key);
+    }
+
+    addButton.textContent = "Adicionada ✓";
+    addButton.classList.add("added");
+  });
+
   link.appendChild(img);
-  content.append(tag, title, description, action);
+  content.append(tag, title, description, action, addButton);
   card.append(link, content);
 
   return card;
-  
-
-  return card;
 }
+
 
 // ============================================
 // CATEGORIA: CARNES & PEIXES
