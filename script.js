@@ -2498,6 +2498,14 @@ function speakCurrentStep() {
         "polentaMolho-etapa-4.mp3",
         "polentaMolho-etapa-5.mp3"
       ],
+      
+            pureMandioquinha: [
+        "pureMandioquinha-etapa-1.mp3",
+        "pureMandioquinha-etapa-2.mp3",
+        "pureMandioquinha-etapa-3.mp3",
+        "pureMandioquinha-etapa-4.mp3",
+        "pureMandioquinha-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
