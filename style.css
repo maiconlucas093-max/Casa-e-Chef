@@ -603,4 +603,144 @@ body.recipe-page #previousStep:disabled {
   cursor: default;
 }
 
+/* ==========================================
+   MEU CARDÁPIO
+========================================== */
+
+.my-menu-section {
+  background: #e9e5da;
+}
+
+.my-menu-panel {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid #e5dfd2;
+  border-radius: 10px;
+  box-shadow: 0 8px 28px rgba(0,0,0,.08);
+}
+
+.my-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee9df;
+}
+
+.my-menu-header h3 {
+  margin: 0;
+  color: #29452e;
+  font: 700 24px Georgia, serif;
+}
+
+.my-menu-header p {
+  margin: 7px 0 0;
+  color: #85877e;
+  font-size: 12px;
+}
+
+.my-menu-icon {
+  color: #c5a15e;
+  font-size: 32px;
+}
+
+.my-menu-empty {
+  padding: 38px 15px;
+  text-align: center;
+}
+
+.my-menu-empty > span {
+  font-size: 42px;
+}
+
+.my-menu-empty h3 {
+  color: #29452e;
+  font: 700 22px Georgia, serif;
+}
+
+.my-menu-empty p {
+  color: #777d73;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.my-menu-empty .button {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: none;
+}
+
+.my-menu-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.my-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 16px;
+  background: #f7f6f1;
+  border: 1px solid #eee9df;
+  border-radius: 6px;
+}
+
+.my-menu-item-info h4 {
+  margin: 0;
+  color: #29452e;
+  font-size: 15px;
+}
+
+.my-menu-item-info p {
+  margin: 6px 0 0;
+  color: #85877e;
+  font-size: 11px;
+}
+
+.my-menu-remove {
+  flex-shrink: 0;
+  padding: 9px 13px;
+  background: #fff;
+  color: #934d3e;
+  border: 1px solid #d9b6ac;
+  border-radius: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.my-menu-remove:hover {
+  background: #934d3e;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .my-menu-panel {
+    padding: 18px 13px;
+  }
+
+  .my-menu-header h3 {
+    font-size: 20px;
+  }
+
+  .my-menu-item {
+    padding: 12px 9px;
+  }
+
+  .my-menu-item-info h4 {
+    font-size: 13px;
+  }
+
+  .my-menu-remove {
+    padding: 8px 9px;
+    font-size: 10px;
+  }
+}
+
+
 
