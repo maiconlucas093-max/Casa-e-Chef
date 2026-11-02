@@ -1663,25 +1663,33 @@ function createRecipeCard(key, recipe) {
   action.textContent = "Ver receita →";
   action.setAttribute("aria-label", "Ver receita " + recipe.title);
 
-  const addButton = document.createElement("button");
-  addButton.type = "button";
-  addButton.className = "menu-add-button";
-  addButton.textContent = menuRecipeKeys.includes(key)
+  
+const addButton = document.createElement("button");
+addButton.type = "button";
+addButton.className = "menu-add-button";
+addButton.dataset.recipeKey = key;
+
+function updateAddButton() {
+  const isAdded = menuRecipeKeys.includes(key);
+
+  addButton.textContent = isAdded
     ? "Adicionada ✓"
     : "＋ Adicionar ao meu cardápio";
 
-  if (menuRecipeKeys.includes(key)) {
-    addButton.classList.add("added");
+  addButton.classList.toggle("added", isAdded);
+}
+
+updateAddButton();
+
+addButton.addEventListener("click", () => {
+  if (!menuRecipeKeys.includes(key)) {
+    menuRecipeKeys.push(key);
   }
 
-  addButton.addEventListener("click", () => {
-    if (!menuRecipeKeys.includes(key)) {
-      menuRecipeKeys.push(key);
-    }
+  updateAddButton();
+  renderMealPlan();
+});
 
-    addButton.textContent = "Adicionada ✓";
-    addButton.classList.add("added");
-  });
 
   link.appendChild(img);
   content.append(tag, title, description, action, addButton);
@@ -1689,6 +1697,92 @@ function createRecipeCard(key, recipe) {
 
   return card;
 }
+
+// ============================================
+// MEU CARDÁPIO
+// ============================================
+
+function syncMenuButtons() {
+  document.querySelectorAll(".menu-add-button").forEach(button => {
+    const isAdded = menuRecipeKeys.includes(button.dataset.recipeKey);
+
+    button.textContent = isAdded
+      ? "Adicionada ✓"
+      : "＋ Adicionar ao meu cardápio";
+
+    button.classList.toggle("added", isAdded);
+  });
+}
+
+function renderMealPlan() {
+  const menuList = document.getElementById("myMenuList");
+  const menuCount = document.getElementById("menuRecipeCount");
+
+  if (!menuList || !menuCount) return;
+
+  const total = menuRecipeKeys.length;
+
+  menuCount.textContent = total === 1
+    ? "1 receita adicionada"
+    : total + " receitas adicionadas";
+
+  menuList.innerHTML = "";
+
+  if (total === 0) {
+    menuList.innerHTML = `
+      <div class="my-menu-empty">
+        <span>🍽️</span>
+        <h3>Seu cardápio está vazio</h3>
+        <p>Escolha receitas na área de receitas e adicione aqui.</p>
+        <a href="#receitas" class="button button-green">
+          Explorar receitas
+        </a>
+      </div>
+    `;
+
+    syncMenuButtons();
+    return;
+  }
+
+  menuRecipeKeys.forEach(key => {
+    const recipe = recipes[key];
+
+    if (!recipe) return;
+
+    const item = document.createElement("article");
+    item.className = "my-menu-item";
+
+    const info = document.createElement("div");
+    info.className = "my-menu-item-info";
+
+    const title = document.createElement("h4");
+    title.textContent = recipe.title;
+
+    const details = document.createElement("p");
+    details.textContent = recipe.time + " · " + recipe.difficulty;
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "my-menu-remove";
+    removeButton.textContent = "Remover";
+    removeButton.setAttribute(
+      "aria-label",
+      "Remover " + recipe.title + " do meu cardápio"
+    );
+
+    removeButton.addEventListener("click", () => {
+      menuRecipeKeys = menuRecipeKeys.filter(itemKey => itemKey !== key);
+      renderMealPlan();
+    });
+
+    info.append(title, details);
+    item.append(info, removeButton);
+    menuList.appendChild(item);
+  });
+
+  syncMenuButtons();
+}
+
 
 
 // ============================================
