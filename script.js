@@ -1708,6 +1708,7 @@ addButton.addEventListener("click", () => {
 // LISTA DE COMPRAS INTELIGENTE
 // ============================================
 
+
 function normalizeShoppingName(name) {
   return name
     .toLowerCase()
@@ -1721,12 +1722,11 @@ function normalizeShoppingName(name) {
 function parseShoppingIngredient(ingredient) {
   const text = ingredient.trim();
 
+  // Reconhece frações antes dos números inteiros.
   const quantityMatch = text.match(
-    /^(\d+(?:[.,]\d+)?|\d+\/\d+)\s*(.*)$/i
+    /^(\d+\/\d+|\d+(?:[.,]\d+)?)\s*(.*)$/i
   );
 
-  // Ingredientes sem quantidade identificável:
-  // mantemos o texto original, sem inventar medidas.
   if (!quantityMatch || !quantityMatch[2]) {
     return {
       quantity: null,
@@ -1736,7 +1736,7 @@ function parseShoppingIngredient(ingredient) {
     };
   }
 
-  let quantityText = quantityMatch[1];
+  const quantityText = quantityMatch[1];
   let quantity;
 
   if (quantityText.includes("/")) {
@@ -1756,10 +1756,11 @@ function parseShoppingIngredient(ingredient) {
   }
 
   let remainder = quantityMatch[2].trim();
-  let unit = "unidade";
+  let unit = "";
 
+  // Mantém separadas colher de sopa, chá e café.
   const unitMatch = remainder.match(
-    /^(xícaras?|xicara|colheres?(?:\s+de\s+(?:sopa|chá|café))?|dentes?|folhas?|unidades?|kg|g|ml|l)\b/i
+    /^(colheres?\s+de\s+(?:sopa|chá|café)|colheres?|xícaras?|xicara|dentes?|folhas?|unidades?|kg|g|ml|l)\b/i
   );
 
   if (unitMatch) {
@@ -1767,9 +1768,9 @@ function parseShoppingIngredient(ingredient) {
     remainder = remainder.slice(unitMatch[0].length).trim();
 
     unit = unit
+      .replace(/^colheres?/, "colher")
       .replace(/^xícaras?$/, "xícara")
       .replace(/^xicara$/, "xícara")
-      .replace(/^colheres?/, "colher")
       .replace(/^dentes?$/, "dente")
       .replace(/^folhas?$/, "folha")
       .replace(/^unidades?$/, "unidade");
@@ -1801,6 +1802,31 @@ function formatShoppingQuantity(quantity) {
     .toString()
     .replace(".", ",");
 }
+
+function formatShoppingUnit(unit, quantity) {
+  if (!unit) return "";
+
+  // Símbolos de medida não recebem "s".
+  if (["g", "kg", "ml", "l"].includes(unit)) {
+    return unit;
+  }
+
+  if (quantity <= 1) return unit;
+
+  if (unit.startsWith("colher")) {
+    return unit.replace("colher", "colheres");
+  }
+
+  const plurals = {
+    "xícara": "xícaras",
+    "dente": "dentes",
+    "folha": "folhas",
+    "unidade": "unidades"
+  };
+
+  return plurals[unit] || unit;
+}
+
 
 function renderShoppingList() {
   const shoppingList = document.getElementById("shoppingList");
@@ -1896,14 +1922,18 @@ function renderShoppingList() {
 
     const name = document.createElement("strong");
 
-    if (item.hasQuantity) {
-      name.textContent =
-        formatShoppingQuantity(item.quantity) +
-        " " + item.unit + (item.quantity > 1 ? "s" : "") +
-        " de " + item.name;
-    } else {
-      name.textContent = item.name;
-    }
+    
+if (item.hasQuantity) {
+  const quantityText = formatShoppingQuantity(item.quantity);
+  const unitText = formatShoppingUnit(item.unit, item.quantity);
+
+  name.textContent = unitText
+    ? quantityText + " " + unitText + " de " + item.name
+    : quantityText + " " + item.name;
+} else {
+  name.textContent = item.name;
+}
+
 
     const sources = document.createElement("small");
     sources.textContent =
