@@ -1629,6 +1629,8 @@ if (recipeGrid) {
 // Nesta etapa, a seleção fica apenas na memória da página.
 let menuRecipeKeys = [];
 
+let purchasedShoppingItems = new Set();
+
 function createRecipeCard(key, recipe) {
   const card = document.createElement("article");
   card.className = "recipe-card";
