@@ -1625,10 +1625,49 @@ if (recipeGrid) {
 }
 
 
-// Receitas selecionadas para o cardápio
-// Nesta etapa, a seleção fica apenas na memória da página.
-let menuRecipeKeys = [];
+// ==========================================
+// SALVAMENTO AUTOMÁTICO DO MEU CARDÁPIO
+// ==========================================
 
+const MENU_STORAGE_KEY = "casaChefMenuRecipes";
+
+function loadMenuRecipes() {
+  try {
+    const savedRecipes = localStorage.getItem(MENU_STORAGE_KEY);
+    
+    if (!savedRecipes) return [];
+    
+    const parsedRecipes = JSON.parse(savedRecipes);
+    
+    if (!Array.isArray(parsedRecipes)) return [];
+    
+    return [...new Set(
+      parsedRecipes.filter(key =>
+        Object.prototype.hasOwnProperty.call(recipes, key)
+      )
+    )];
+    
+  } catch (error) {
+    console.warn("Não foi possível recuperar o cardápio:", error);
+    return [];
+  }
+}
+
+function saveMenuRecipes() {
+  try {
+    localStorage.setItem(
+      MENU_STORAGE_KEY,
+      JSON.stringify(menuRecipeKeys)
+    );
+  } catch (error) {
+    console.warn("Não foi possível salvar o cardápio:", error);
+  }
+}
+
+// Recupera as receitas salvas ao abrir o site.
+let menuRecipeKeys = loadMenuRecipes();
+
+// A persistência dos itens comprados será feita na próxima etapa.
 let purchasedShoppingItems = new Set();
 
 function createRecipeCard(key, recipe) {
