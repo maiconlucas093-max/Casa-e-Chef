@@ -742,5 +742,92 @@ body.recipe-page #previousStep:disabled {
   }
 }
 
+/* ==========================================
+   REFINAMENTO DOS BOTÕES - MEU CARDÁPIO
+========================================== */
+
+.menu-add-button {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 13px 15px;
+  border: 1px solid #b99a5b;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #29452e, #3d6242);
+  color: #fffaf0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(41, 69, 46, 0.13);
+  transition: all 0.25s ease;
+}
+
+.menu-add-button:hover {
+  background: #d9b76b;
+  color: #203321;
+  border-color: #d9b76b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(41, 69, 46, 0.16);
+}
+
+.menu-add-button:active {
+  transform: scale(0.98);
+}
+
+.menu-add-button.added {
+  background: #eaf1e7;
+  color: #34583a;
+  border: 1px solid #b7cbb1;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* BOTÃO REMOVER */
+
+.my-menu-remove {
+  flex-shrink: 0;
+  padding: 10px 17px;
+  border: 1px solid #e4c5bb;
+  border-radius: 25px;
+  background: #fff5f1;
+  color: #985b4d;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.my-menu-remove:hover {
+  background: #985b4d;
+  border-color: #985b4d;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.my-menu-remove:active {
+  transform: scale(0.96);
+}
+
+.menu-add-button:focus-visible,
+.my-menu-remove:focus-visible {
+  outline: 3px solid #d9b76b;
+  outline-offset: 3px;
+}
+
+/* AJUSTES PARA CELULAR */
+
+@media (max-width: 600px) {
+  .menu-add-button {
+    padding: 12px 10px;
+    font-size: 12px;
+  }
+
+  .my-menu-remove {
+    padding: 9px 13px;
+    font-size: 11px;
+  }
+}
+
 
 
