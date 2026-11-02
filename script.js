@@ -1725,8 +1725,9 @@ updateAddButton();
 addButton.addEventListener("click", () => {
   if (!menuRecipeKeys.includes(key)) {
     menuRecipeKeys.push(key);
+    saveMenuRecipes();
   }
-
+  
   updateAddButton();
   renderMealPlan();
 });
