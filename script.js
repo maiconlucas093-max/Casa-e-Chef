@@ -1955,6 +1955,7 @@ document.querySelectorAll(".filter-button").forEach(button => {
 });
 
 renderRecipes();
+renderMealPlan();
 
 // ============================================
 // DETALHES DA RECEITA
