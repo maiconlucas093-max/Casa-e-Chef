@@ -829,5 +829,129 @@ body.recipe-page #previousStep:disabled {
   }
 }
 
+/* ==========================================
+   LISTA DE COMPRAS INTELIGENTE
+========================================== */
+
+.shopping-list-panel {
+  margin-top: 30px;
+  padding-top: 25px;
+  border-top: 1px solid #e9e2d5;
+}
+
+.shopping-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.shopping-eyebrow {
+  color: #b18e4f;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.shopping-list-header h3 {
+  margin: 7px 0 0;
+  color: #29452e;
+  font: 700 23px Georgia, serif;
+}
+
+.shopping-list-header p {
+  margin: 6px 0 0;
+  color: #85877e;
+  font-size: 12px;
+}
+
+.shopping-list-icon {
+  font-size: 30px;
+}
+
+.shopping-list {
+  display: grid;
+  gap: 10px;
+}
+
+.shopping-list-empty {
+  padding: 25px 15px;
+  text-align: center;
+  background: #f7f6f1;
+  border: 1px dashed #d9d0bf;
+  border-radius: 10px;
+}
+
+.shopping-list-empty span {
+  font-size: 30px;
+}
+
+.shopping-list-empty p {
+  color: #777d73;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.shopping-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 15px;
+  background: #f8f7f3;
+  border: 1px solid #eee9df;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.shopping-item input {
+  width: 19px;
+  height: 19px;
+  accent-color: #34583a;
+  flex-shrink: 0;
+}
+
+.shopping-item-info {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.shopping-item-info strong {
+  color: #29452e;
+  font-size: 13px;
+}
+
+.shopping-item-info small {
+  color: #85877e;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.shopping-item.purchased {
+  background: #edf3e9;
+  opacity: 0.7;
+}
+
+.shopping-item.purchased strong {
+  text-decoration: line-through;
+  color: #788675;
+}
+
+@media (max-width: 600px) {
+  .shopping-list-panel {
+    margin-top: 24px;
+  }
+
+  .shopping-list-header h3 {
+    font-size: 20px;
+  }
+
+  .shopping-item {
+    padding: 12px 10px;
+  }
+}
+
 
 
