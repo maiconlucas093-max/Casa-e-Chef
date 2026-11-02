@@ -1667,8 +1667,47 @@ function saveMenuRecipes() {
 // Recupera as receitas salvas ao abrir o site.
 let menuRecipeKeys = loadMenuRecipes();
 
-// A persistência dos itens comprados será feita na próxima etapa.
-let purchasedShoppingItems = new Set();
+// ==========================================
+// SALVAMENTO AUTOMÁTICO DOS ITENS COMPRADOS
+// ==========================================
+
+const PURCHASED_STORAGE_KEY = "casaChefPurchasedItems";
+
+function loadPurchasedItems() {
+  try {
+    const savedItems = localStorage.getItem(PURCHASED_STORAGE_KEY);
+    
+    if (!savedItems) return new Set();
+    
+    const parsedItems = JSON.parse(savedItems);
+    
+    if (!Array.isArray(parsedItems)) return new Set();
+    
+    return new Set(
+      parsedItems.filter(item =>
+        typeof item === "string" && item.length > 0
+      )
+    );
+    
+  } catch (error) {
+    console.warn("Não foi possível recuperar os itens comprados:", error);
+    return new Set();
+  }
+}
+
+function savePurchasedItems() {
+  try {
+    localStorage.setItem(
+      PURCHASED_STORAGE_KEY,
+      JSON.stringify([...purchasedShoppingItems])
+    );
+  } catch (error) {
+    console.warn("Não foi possível salvar os itens comprados:", error);
+  }
+}
+
+// Recupera as marcações ao abrir o site.
+let purchasedShoppingItems = loadPurchasedItems();
 
 function createRecipeCard(key, recipe) {
   const card = document.createElement("article");
