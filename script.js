@@ -2506,6 +2506,14 @@ function speakCurrentStep() {
         "pureMandioquinha-etapa-4.mp3",
         "pureMandioquinha-etapa-5.mp3"
       ],
+      
+            abobrinhaRefogada: [
+        "abobrinhaRefogada-etapa-1.mp3",
+        "abobrinhaRefogada-etapa-2.mp3",
+        "abobrinhaRefogada-etapa-3.mp3",
+        "abobrinhaRefogada-etapa-4.mp3",
+        "abobrinhaRefogada-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
