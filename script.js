@@ -2482,6 +2482,14 @@ function speakCurrentStep() {
         "saladaMacarrao-etapa-4.mp3",
         "saladaMacarrao-etapa-5.mp3"
       ],
+      
+            cuscuzRecheado: [
+        "cuscuzRecheado-etapa-1.mp3",
+        "cuscuzRecheado-etapa-2.mp3",
+        "cuscuzRecheado-etapa-3.mp3",
+        "cuscuzRecheado-etapa-4.mp3",
+        "cuscuzRecheado-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
