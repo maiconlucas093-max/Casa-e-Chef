@@ -2490,6 +2490,14 @@ function speakCurrentStep() {
         "cuscuzRecheado-etapa-4.mp3",
         "cuscuzRecheado-etapa-5.mp3"
       ],
+      
+            polentaMolho: [
+        "polentaMolho-etapa-1.mp3",
+        "polentaMolho-etapa-2.mp3",
+        "polentaMolho-etapa-3.mp3",
+        "polentaMolho-etapa-4.mp3",
+        "polentaMolho-etapa-5.mp3"
+      ],
      };
 
   const audiosDaReceita = audiosPorReceita[recipeKey];
