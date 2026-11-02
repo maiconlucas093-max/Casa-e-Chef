@@ -573,4 +573,34 @@ body.recipe-page #previousStep:disabled {
   opacity: 1 !important;
 }
 
+/* BOTÃO ADICIONAR AO MEU CARDÁPIO */
+
+.menu-add-button {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 8px;
+  border: 1px solid #c9a65f;
+  border-radius: 5px;
+  background: #29452e;
+  color: #fff8e9;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.menu-add-button:hover {
+  background: #d9b76b;
+  color: #203321;
+  transform: translateY(-1px);
+}
+
+.menu-add-button.added {
+  background: #e8efe5;
+  color: #29452e;
+  border-color: #9bb49b;
+  cursor: default;
+}
+
 
