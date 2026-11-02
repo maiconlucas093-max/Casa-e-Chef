@@ -1704,6 +1704,226 @@ addButton.addEventListener("click", () => {
 // MEU CARDÁPIO
 // ============================================
 
+// ============================================
+// LISTA DE COMPRAS INTELIGENTE
+// ============================================
+
+function normalizeShoppingName(name) {
+  return name
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\b(picado|picada|picados|picadas)\b/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseShoppingIngredient(ingredient) {
+  const text = ingredient.trim();
+
+  const quantityMatch = text.match(
+    /^(\d+(?:[.,]\d+)?|\d+\/\d+)\s*(.*)$/i
+  );
+
+  // Ingredientes sem quantidade identificável:
+  // mantemos o texto original, sem inventar medidas.
+  if (!quantityMatch || !quantityMatch[2]) {
+    return {
+      quantity: null,
+      unit: "",
+      name: text,
+      key: normalizeShoppingName(text)
+    };
+  }
+
+  let quantityText = quantityMatch[1];
+  let quantity;
+
+  if (quantityText.includes("/")) {
+    const parts = quantityText.split("/");
+    quantity = Number(parts[0]) / Number(parts[1]);
+  } else {
+    quantity = Number(quantityText.replace(",", "."));
+  }
+
+  if (!Number.isFinite(quantity)) {
+    return {
+      quantity: null,
+      unit: "",
+      name: text,
+      key: normalizeShoppingName(text)
+    };
+  }
+
+  let remainder = quantityMatch[2].trim();
+  let unit = "unidade";
+
+  const unitMatch = remainder.match(
+    /^(xícaras?|xicara|colheres?(?:\s+de\s+(?:sopa|chá|café))?|dentes?|folhas?|unidades?|kg|g|ml|l)\b/i
+  );
+
+  if (unitMatch) {
+    unit = unitMatch[1].toLowerCase();
+    remainder = remainder.slice(unitMatch[0].length).trim();
+
+    unit = unit
+      .replace(/^xícaras?$/, "xícara")
+      .replace(/^xicara$/, "xícara")
+      .replace(/^colheres?/, "colher")
+      .replace(/^dentes?$/, "dente")
+      .replace(/^folhas?$/, "folha")
+      .replace(/^unidades?$/, "unidade");
+  }
+
+  remainder = remainder.replace(/^de\s+/i, "").trim();
+
+  if (!remainder) {
+    return {
+      quantity: null,
+      unit: "",
+      name: text,
+      key: normalizeShoppingName(text)
+    };
+  }
+
+  const normalizedName = normalizeShoppingName(remainder);
+
+  return {
+    quantity,
+    unit,
+    name: remainder,
+    key: unit + "|" + normalizedName
+  };
+}
+
+function formatShoppingQuantity(quantity) {
+  return Number(quantity.toFixed(3))
+    .toString()
+    .replace(".", ",");
+}
+
+function renderShoppingList() {
+  const shoppingList = document.getElementById("shoppingList");
+  const shoppingCount = document.getElementById("shoppingListCount");
+
+  if (!shoppingList || !shoppingCount) return;
+
+  shoppingList.innerHTML = "";
+
+  const groupedIngredients = new Map();
+
+  menuRecipeKeys.forEach(recipeKey => {
+    const recipe = recipes[recipeKey];
+
+    if (!recipe || !Array.isArray(recipe.ingredients)) return;
+
+    recipe.ingredients.forEach(ingredient => {
+      const parsed = parseShoppingIngredient(ingredient);
+
+      const groupKey = parsed.key;
+
+      if (!groupedIngredients.has(groupKey)) {
+        groupedIngredients.set(groupKey, {
+          name: parsed.name,
+          quantity: parsed.quantity,
+          unit: parsed.unit,
+          sources: [recipe.title],
+          hasQuantity: parsed.quantity !== null
+        });
+
+        return;
+      }
+
+      const group = groupedIngredients.get(groupKey);
+
+      if (!group.sources.includes(recipe.title)) {
+        group.sources.push(recipe.title);
+      }
+
+      // Só somamos quantidades quando a unidade
+      // e o ingrediente são exatamente compatíveis.
+      if (
+        group.hasQuantity &&
+        parsed.quantity !== null &&
+        group.unit === parsed.unit
+      ) {
+        group.quantity += parsed.quantity;
+      } else if (
+        group.hasQuantity &&
+        parsed.quantity === null
+      ) {
+        group.hasQuantity = false;
+        group.quantity = null;
+      }
+    });
+  });
+
+  const ingredients = Array.from(groupedIngredients.entries());
+
+  shoppingCount.textContent = ingredients.length === 1
+    ? "1 item"
+    : ingredients.length + " itens";
+
+  if (ingredients.length === 0) {
+    shoppingList.innerHTML = `
+      <div class="shopping-list-empty">
+        <span>🛒</span>
+        <p>Adicione receitas ao seu cardápio para gerar sua lista de compras.</p>
+      </div>
+    `;
+
+    return;
+  }
+
+  ingredients.forEach(([key, item]) => {
+    const row = document.createElement("label");
+    row.className = "shopping-list-item";
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = purchasedShoppingItems.has(key);
+
+    checkbox.addEventListener("change", () => {
+      if (checkbox.checked) {
+        purchasedShoppingItems.add(key);
+      } else {
+        purchasedShoppingItems.delete(key);
+      }
+    });
+
+    const content = document.createElement("span");
+    content.className = "shopping-list-item-content";
+
+    const name = document.createElement("strong");
+
+    if (item.hasQuantity) {
+      name.textContent =
+        formatShoppingQuantity(item.quantity) +
+        " " + item.unit + (item.quantity > 1 ? "s" : "") +
+        " de " + item.name;
+    } else {
+      name.textContent = item.name;
+    }
+
+    const sources = document.createElement("small");
+    sources.textContent =
+      "Receitas: " + item.sources.join(", ");
+
+    content.append(name, sources);
+    row.append(checkbox, content);
+
+    if (checkbox.checked) {
+      row.classList.add("purchased");
+    }
+
+    checkbox.addEventListener("change", () => {
+      row.classList.toggle("purchased", checkbox.checked);
+    });
+
+    shoppingList.appendChild(row);
+  });
+}
+
 function syncMenuButtons() {
   document.querySelectorAll(".menu-add-button").forEach(button => {
     const isAdded = menuRecipeKeys.includes(button.dataset.recipeKey);
