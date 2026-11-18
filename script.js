@@ -25,7 +25,7 @@ const recipes = {
     category: "basicas almoco",
     time: "25 min",
     difficulty: "Fácil",
-    image: "https://images.unsplash.com/photo-1516684732162-798a0062be99?auto=format&fit=crop&w=900&q=85",
+    image: "https://images.unsplash.com/photo-1704916029292-ec7b5976204c?auto=format&fit=crop&w=900&q=85",
     description: "Arroz branco soltinho para acompanhar suas refeições.",
     seasoning: "Alho e cebola formam uma base saborosa. Uma folha de louro pode trazer um aroma especial.",
     ingredients: ["1 xícara de arroz", "2 xícaras de água", "2 dentes de alho", "1/2 cebola", "1 colher de óleo", "Sal a gosto"],
